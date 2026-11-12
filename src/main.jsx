@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Lenis from 'lenis'
 import { ArrowDownRight, ArrowUpRight, Menu, Moon, MoveRight, Sun, X } from 'lucide-react'
 import leadManagementDashboard from './assets/lead-management-dashboard.png'
+import kdsOrderDisplay from './assets/kds-order-display.png'
 import './styles.css'
 
 const projects = [
@@ -61,7 +62,7 @@ function App() {
       <div className="section-head"><p className="eyebrow">Selected work <span>— 06</span></p><h2>Recent <i>projects</i></h2></div>
       <div className="project-grid">
         {projects.map((project, index) => <motion.article key={project.title} className={`project-card ${project.className} ${project.title.includes('PORTAL') || project.title === 'HOSINSPIRE WEBSITE' ? 'desktop-project' : ''} ${project.title === 'LEAD MANAGEMENT PORTAL' ? 'has-dashboard' : ''} ${project.title === 'KITCHEN DISPLAY SYSTEM' ? 'kitchen-display' : ''}`} initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true, amount:.2}} transition={{delay:index*.1}} onClick={() => setActiveProject(project)}>
-          <div className="project-visual"><div className={`device one ${project.title === 'LEAD MANAGEMENT PORTAL' ? 'dashboard-device' : ''}`}>{project.title === 'LEAD MANAGEMENT PORTAL' && <img src={leadManagementDashboard} alt="Lead Management Portal dashboard interface"/>}</div><div className="device two"/><div className="device-copy">{project.displayTitle}</div></div>
+          <div className="project-visual"><div className={`device one ${project.title === 'LEAD MANAGEMENT PORTAL' ? 'dashboard-device' : ''} ${project.title === 'KITCHEN DISPLAY SYSTEM' ? 'kds-device' : ''}`}>{project.title === 'LEAD MANAGEMENT PORTAL' && <img src={leadManagementDashboard} alt="Lead Management Portal dashboard interface"/>}{project.title === 'KITCHEN DISPLAY SYSTEM' && <img src={kdsOrderDisplay} alt="Kitchen Display System order screen"/>}</div><div className="device two"/><div className="device-copy">{project.displayTitle}</div></div>
           <div className="project-info"><span>{project.number}</span><div><h3>{project.title}</h3><p>{project.type}</p></div><ArrowUpRight size={19}/></div>
         </motion.article>)}
       </div>
